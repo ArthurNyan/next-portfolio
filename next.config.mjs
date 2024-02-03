@@ -1,8 +1,7 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     sassOptions: {
-        additionalData: `@import "@/shared/styles/_vars.scss"; @import "@/shared/styles/normalize.scss";`,
+        additionalData: `@import "@/shared/styles/_vars.scss";`,
     },
     rewrites() {
         return [
