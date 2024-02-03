@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb",
+    "next/core-web-vitals",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "rules": {
+    "one-var": 0,
+    "no-underscore-dangle": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/function-component-definition": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-cycle": 0,
+    "no-param-reassign": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "prettier/prettier": [
+      "error", {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
