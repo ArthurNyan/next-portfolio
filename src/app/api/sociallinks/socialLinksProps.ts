@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { ISocialLinks } from '../_model/socialLinks.model';
+import { ISocialLinksProps } from '../_model/sociallinks.model';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getSocialLinks = cache(async () => {
@@ -8,5 +8,5 @@ export const getSocialLinks = cache(async () => {
         next: { revalidate: 1000 },
     });
     const data = socialLinks.json();
-    return data as unknown as ISocialLinks[];
+    return data as unknown as ISocialLinksProps[];
 });

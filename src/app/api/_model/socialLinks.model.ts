@@ -1,4 +1,4 @@
-export interface ISocialLinks {
+export interface ISocialLinksProps {
     id: string;
     link: string;
     nameRu: string;
