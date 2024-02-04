@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__social{
+        display: flex;
+        gap: 12px;
+    }
+}
