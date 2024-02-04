@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 64px;
+
+    & nav {
+        display: flex;
+        gap: 12px;
+
+        & a {
+            text-decoration: none;
+            color: $dark700;
+        }
+    }
+}
