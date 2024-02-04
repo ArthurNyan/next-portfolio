@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { ISocialLinksProps } from '../_model/sociallinks.model';
+import { ISocialLinksProps } from '../_model/socialLinksProps';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getSocialLinks = cache(async () => {
