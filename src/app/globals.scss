@@ -2,14 +2,9 @@
 
 html,
 body {
+    width: 100%;
     height: 100%;
     color: $dark900;
-}
-
-body {
-    max-width: $main-size;
-    margin: 64px auto;
-    padding: 0 20px;
 }
 
 main {
@@ -20,6 +15,10 @@ main {
 }
 
 .layout {
+    max-width: $main-size;
+    height: auto;
     display: flex;
     flex-direction: column;
+    margin: 24px auto;
+    padding: 0 1rem 16rem 1rem;
 }
