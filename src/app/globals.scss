@@ -3,19 +3,23 @@
 html,
 body {
     height: 100%;
-    width: 100%;
-    color: $typo-standart;
+    color: $dark900;
+}
+
+body {
+    max-width: $main-size;
+    margin: 64px auto;
+    padding: 0 20px;
 }
 
 main {
     width: 100%;
-    max-width: $main-size;
-    margin: 0 auto;
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
 }
 
 .layout {
-    min-width: 100%;
     display: flex;
     flex-direction: column;
 }
