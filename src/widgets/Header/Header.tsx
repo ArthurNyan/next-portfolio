@@ -1,4 +1,4 @@
-import Link from '@/shared/components/Typography/Links/Link/Link';
+import { Link } from '@/shared/components';
 
 import styles from './Header.module.scss';
 
