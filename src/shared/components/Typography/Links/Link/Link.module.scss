@@ -1,0 +1,12 @@
+.link {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: $dark300;
+
+    &:hover {
+        text-decoration-color: $dark500;
+        transition: color 0.2s;
+    }
+}

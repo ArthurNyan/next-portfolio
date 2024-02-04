@@ -1,0 +1,14 @@
+.link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: $dark700;
+
+    &:hover {
+        color: $dark300;
+        transition: color 0.1s;
+    }
+}
