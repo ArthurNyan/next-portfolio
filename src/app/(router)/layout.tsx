@@ -2,9 +2,13 @@ import classNames from 'classnames';
 import { Metadata } from 'next';
 import { Nunito_Sans } from 'next/font/google';
 
-import Header from '@/widgets/Header/Header';
+import Header from '@/widgets/Header';
+import Footer from '@/widgets/Footer';
 
 import '../globals.scss';
+
+import { getSocialLinks } from '../api/sociallinks/socialLinks';
+import { getExperience } from '../api/experience/experience';
 
 export const metadata: Metadata = {
     title: {
@@ -24,11 +28,14 @@ const NunitoSans = Nunito_Sans({
 });
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+    getSocialLinks();
+    getExperience();
     return (
         <html lang="ru">
             <body className={classNames(NunitoSans.className, 'layout')}>
                 <Header />
                 <main>{children}</main>
+                <Footer />
             </body>
         </html>
     );
