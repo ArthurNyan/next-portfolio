@@ -1,0 +1,35 @@
+.cv {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        & p {
+            font-size: 1.2rem;
+            color: $dark700;
+        }
+    }
+
+    &__experience {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__edu {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &__flex {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 46px;
+        }
+    }
+}
