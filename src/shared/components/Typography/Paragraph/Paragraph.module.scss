@@ -3,4 +3,13 @@
     font-size: 1rem;
     line-height: 1.75;
     color: $dark700;
+    &[data-font='dark'] {
+        color: $dark900;
+    }
+    &[data-font='light'] {
+        color: $dark500;
+    }
+    &[data-font='primary'] {
+        color: $primary700;
+    }
 }
