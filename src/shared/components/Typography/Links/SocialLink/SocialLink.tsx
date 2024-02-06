@@ -1,4 +1,4 @@
-import SocialArrow from '@/shared/components/Icons/SocialArrow/SocialArrow';
+import { SocialArrow } from '@/shared/components';
 
 import { ITypography } from '../../model/Typography.model';
 import styles from './SocialLink.module.scss';
