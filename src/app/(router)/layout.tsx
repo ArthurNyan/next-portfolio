@@ -1,11 +1,14 @@
 import classNames from 'classnames';
 import { Metadata } from 'next';
-import { ConfigProvider } from 'antd';
-import { Open_Sans } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 
-import themeConfig from '../theme';
+import Header from '@/widgets/Header';
+import Footer from '@/widgets/Footer';
 
-import './globals.scss';
+import '../globals.scss';
+
+import { getSocialLinks } from '../api/sociallinks/socialLinks';
+import { getExperience } from '../api/experience/experience';
 
 export const metadata: Metadata = {
     title: {
@@ -19,18 +22,21 @@ interface RootLayoutProps {
     children: React.ReactNode;
 }
 
-const openSans = Open_Sans({
+const NunitoSans = Nunito_Sans({
     subsets: ['latin'],
+    weight: ['200', '300', '400', '500'],
 });
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+    getSocialLinks();
+    getExperience();
     return (
         <html lang="ru">
-            <ConfigProvider theme={themeConfig}>
-                <body className={classNames(openSans.className, 'layout')}>
-                    <main>{children}</main>
-                </body>
-            </ConfigProvider>
+            <body className={classNames(NunitoSans.className, 'layout')}>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+            </body>
         </html>
     );
 }

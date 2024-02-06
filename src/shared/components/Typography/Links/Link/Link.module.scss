@@ -1,0 +1,38 @@
+.link {
+    cursor: pointer;
+    color: $dark500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: $dark300;
+
+    &[data-font='dark'] {
+        color: $dark900;
+    }
+    &[data-font='light'] {
+        color: $dark500;
+    }
+    &[data-font='default'] {
+        color: $dark700;
+    }
+    &[data-font='primary'] {
+        color: $primary700;
+    }
+
+    &:hover {
+        text-decoration-color: $dark500;
+        transition: color 0.2s;
+
+        &[data-font='dark'] {
+            color: $dark900;
+        }
+        &[data-font='light'] {
+            color: $dark500;
+        }
+        &[data-font='default'] {
+            color: $dark700;
+        }
+        &[data-font='primary'] {
+            color: $primary700;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+@import '@/shared/styles/normalize';
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    color: $dark900;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.layout {
+    max-width: $main-size;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin: 24px auto;
+    padding: 0 1rem 16rem 1rem;
+}
