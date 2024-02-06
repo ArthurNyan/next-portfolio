@@ -1,0 +1,22 @@
+.experienceItem {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    &__duties {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        & ul {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+    &__date {
+        width: 100%;
+        max-width: 120px;
+    }
+}
