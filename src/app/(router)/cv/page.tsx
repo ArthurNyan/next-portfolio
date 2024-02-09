@@ -1,6 +1,6 @@
 import { Link, Paragraph, SubTitle, Title, HerzenLogo } from '@/shared/components';
 import ExperienceItem from '@/widgets/ExperienceItem/ExperienceItem';
-import { getExperience } from '@/app/api/experience/experience';
+import { getExperience } from '@/app/api/experience/utils';
 
 import styles from './cv.module.scss';
 

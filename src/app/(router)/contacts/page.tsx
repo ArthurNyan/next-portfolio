@@ -1,4 +1,4 @@
-import { getSocialLinks } from '@/app/api/sociallinks/socialLinks';
+import { getSocialLinks } from '@/app/api/sociallinks/utlis';
 import { Title, SocialLink } from '@/shared/components';
 
 const ContactsPage = async () => {

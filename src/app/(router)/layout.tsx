@@ -7,8 +7,8 @@ import Footer from '@/widgets/Footer';
 
 import '../globals.scss';
 
-import { getSocialLinks } from '../api/sociallinks/socialLinks';
-import { getExperience } from '../api/experience/experience';
+import { getSocialLinks } from '../api/sociallinks/utlis';
+import { getExperience } from '../api/experience/utils';
 
 export const metadata: Metadata = {
     title: {
