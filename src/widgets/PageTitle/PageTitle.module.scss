@@ -1,0 +1,14 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 2rem;
+
+    & h1 {
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 2rem;
+        margin: 0;
+    }
+}

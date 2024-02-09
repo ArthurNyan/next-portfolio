@@ -4,4 +4,5 @@ export interface ITypography {
     className?: string;
     href?: string;
     fontStyle?: 'default' | 'primary' | 'dark' | 'light';
+    contentSlot?: React.ReactNode;
 }

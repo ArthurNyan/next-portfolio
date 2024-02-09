@@ -1,11 +1,11 @@
 'use client';
 
-import Title from '@/shared/components/Typography/Title/Title';
+import PageTitle from '@/widgets/PageTitle';
 
 export default function NotFound() {
     return (
         <div>
-            <Title>Not found page</Title>
+            <PageTitle>Not found page</PageTitle>
             wda
         </div>
     );

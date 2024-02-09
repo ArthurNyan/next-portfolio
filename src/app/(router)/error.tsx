@@ -1,7 +1,7 @@
 'use client';
 
-import { Title } from '@/shared/components';
+import PageTitle from '@/widgets/PageTitle';
 
 export default function Error({ error }: { error: Error & { digest?: string } }) {
-    return <Title>{error.message}</Title>;
+    return <PageTitle>{error.message}</PageTitle>;
 }

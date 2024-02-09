@@ -1,9 +1,9 @@
-import { Title } from '@/shared/components';
+import PageTitle from '@/widgets/PageTitle';
 
 const ProjectsPage = async () => {
     return (
         <div>
-            <Title>check my projects</Title>
+            <PageTitle>check my projects</PageTitle>
         </div>
     );
 };

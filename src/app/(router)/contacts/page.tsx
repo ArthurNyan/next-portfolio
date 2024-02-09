@@ -1,12 +1,13 @@
 import { getSocialLinks } from '@/app/api/sociallinks/utlis';
-import { Title, SocialLink } from '@/shared/components';
+import { SocialLink } from '@/shared/components';
+import PageTitle from '@/widgets/PageTitle';
 
 const ContactsPage = async () => {
     const socialLinks = await getSocialLinks();
 
     return (
         <div>
-            <Title>some contacts</Title>
+            <PageTitle>some contacts</PageTitle>
             {socialLinks?.map((link) => (
                 <SocialLink href={link.link} key={link.id}>
                     {link.nameEn.toLowerCase()}{' '}

@@ -1,13 +1,14 @@
-import { Title, SubTitle, Paragraph, SocialLink, Link } from '@/shared/components';
+import { SubTitle, Paragraph, SocialLink, Link } from '@/shared/components';
 import GridGallery from '@/shared/components/GridGallery/GridGallery';
 import images from '@/shared/data/images.json';
+import PageTitle from '@/widgets/PageTitle';
 
 import styles from './MainPage.module.scss';
 
 const HomePage = () => {
     return (
         <div className={styles.main}>
-            <Title>home page</Title>
+            <PageTitle>home page</PageTitle>
             <SubTitle>hey, I&#39;m Arthur 👋</SubTitle>
             <Paragraph>
                 I&#39;m a frontend developer, an optimist, an athlete, and a sleuth of something
