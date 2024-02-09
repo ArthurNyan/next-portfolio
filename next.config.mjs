@@ -1,4 +1,8 @@
 const nextConfig = {
+    experimental: {
+        ppr: true,
+        useLightningcss: true,
+    },
     reactStrictMode: true,
     sassOptions: {
         additionalData: `@import "@/shared/styles/_vars.scss";`,
