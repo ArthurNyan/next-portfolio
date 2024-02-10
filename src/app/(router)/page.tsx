@@ -1,11 +1,12 @@
 import { SubTitle, Paragraph, SocialLink, Link } from '@/shared/components';
 import GridGallery from '@/shared/components/GridGallery/GridGallery';
-import images from '@/shared/data/images.json';
 import PageTitle from '@/widgets/PageTitle';
 
 import styles from './MainPage.module.scss';
+import { getPortfolioImages } from '../api/images/utils';
 
-const HomePage = () => {
+const HomePage = async () => {
+    const images = await getPortfolioImages();
     return (
         <div className={styles.main}>
             <PageTitle>home page</PageTitle>

@@ -10,6 +10,7 @@ import '../globals.scss';
 import { getSocialLinks } from '../api/sociallinks/utlis';
 import { getExperience } from '../api/experience/utils';
 import { getAllProjects } from '../api/projects/utils';
+import { getPortfolioImages } from '../api/images/utils';
 
 export const metadata: Metadata = {
     title: {
@@ -29,7 +30,7 @@ const NunitoSans = Nunito_Sans({
 });
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-    Promise.all([getSocialLinks(), getExperience(), getAllProjects()]);
+    Promise.all([getSocialLinks(), getExperience(), getAllProjects(), getPortfolioImages()]);
 
     return (
         <html lang="ru">
