@@ -26,6 +26,7 @@ export const metadata: Metadata = {
         siteName: 'Arthur Nakhatakyan',
         locale: 'RU',
         type: 'website',
+        images: './opengraph-image.tsx',
     },
     robots: {
         index: true,
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
     twitter: {
         title: 'Arthur Nakhatakyan',
         card: 'summary_large_image',
+        images: './opengraph-image.tsx',
     },
 };
 
