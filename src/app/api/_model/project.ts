@@ -4,6 +4,6 @@ export interface IProject {
     updateAt?: Date;
     date: Date;
     description: string;
-    images?: string;
+    image: string;
     link: string;
 }
