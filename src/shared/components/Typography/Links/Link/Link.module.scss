@@ -7,6 +7,7 @@
 
     &[data-font='dark'] {
         color: $dark900;
+        text-decoration: none;
     }
     &[data-font='light'] {
         color: $dark500;
@@ -20,10 +21,10 @@
 
     &:hover {
         text-decoration-color: $dark500;
-        transition: color 0.2s;
+        transition: color 0.1s;
 
         &[data-font='dark'] {
-            color: $dark900;
+            color: $dark500;
         }
         &[data-font='light'] {
             color: $dark500;

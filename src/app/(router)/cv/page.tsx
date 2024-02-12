@@ -1,6 +1,7 @@
-import { Link, Paragraph, SubTitle, Title, HerzenLogo } from '@/shared/components';
+import { Link, Paragraph, SubTitle, HerzenLogo } from '@/shared/components';
 import ExperienceItem from '@/widgets/ExperienceItem/ExperienceItem';
-import { getExperience } from '@/app/api/experience/experience';
+import { getExperience } from '@/app/api/experience/utils';
+import PageTitle from '@/widgets/PageTitle';
 
 import styles from './cv.module.scss';
 
@@ -9,7 +10,7 @@ const BlogPage = async () => {
 
     return (
         <div className={styles.cv}>
-            <Title>frontend developer</Title>
+            <PageTitle>frontend developer</PageTitle>
             <div className={styles.cv__title}>
                 <SubTitle>Arthur Nakhatakyan — St. Petersburg, Russia</SubTitle>
                 <Paragraph>TypeScript, Next, Redux, React Query, Webpack, Docker</Paragraph>
