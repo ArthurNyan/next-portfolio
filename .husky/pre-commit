@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Check if the current branch name is valid
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+BRANCH_REGEX='^(feature|bugfix|refactor)\/[a-z0-9-]+$'
+
+if ! [[ $BRANCH_NAME =~ $BRANCH_REGEX ]]; then
+   echo "Error: Invalid branch name format."	
+   exit 1
+fi
+
+#Check linting
+npm run lint
