@@ -1,3 +1,9 @@
+import withPWAInit from '@ducanh2912/next-pwa';
+
+const withPWA = withPWAInit({
+    dest: 'public',
+});
+
 const nextConfig = {
     experimental: {
         ppr: true,
@@ -44,4 +50,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);
