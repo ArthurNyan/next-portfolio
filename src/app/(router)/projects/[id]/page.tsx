@@ -69,6 +69,12 @@ const ProjectPage = async ({ params: { id } }: ProjectPageProps) => {
                 </div>
             )}
             <Paragraph>{project.description}</Paragraph>
+            {project.links && <Paragraph>Ссылки</Paragraph>}
+            {project.links?.map(({ link, title }) => (
+                <SocialLink href={link || ''} key={link}>
+                    {title}
+                </SocialLink>
+            ))}
             {updateAt && (
                 <SocialLink href={project.link || ''}>Updated at {formatDate(updateAt)}</SocialLink>
             )}
