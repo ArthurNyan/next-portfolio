@@ -7,6 +7,7 @@ import Footer from '@/widgets/Footer';
 
 import '../globals.scss';
 
+import Analytics from '../providers/Analytics';
 import { getSocialLinks } from '../api/sociallinks/utlis';
 import { getExperience } from '../api/experience/utils';
 import { getAllProjects } from '../api/projects/utils';
@@ -59,6 +60,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="ru">
             <body className={classNames(NunitoSans.className, 'layout')}>
+                <Analytics />
                 <Header />
                 <main>{children}</main>
                 <Footer />
