@@ -1,4 +1,14 @@
+import withPWAInit from '@ducanh2912/next-pwa';
+
+const withPWA = withPWAInit({
+    dest: 'public',
+});
+
 const nextConfig = {
+    experimental: {
+        // ppr: true,
+        useLightningcss: true,
+    },
     reactStrictMode: true,
     sassOptions: {
         additionalData: `@import "@/shared/styles/_vars.scss";`,
@@ -40,4 +50,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+export default withPWA(nextConfig);

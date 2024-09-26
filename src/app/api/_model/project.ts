@@ -1,5 +1,5 @@
 export interface IProject {
-    id: number | string;
+    id: number;
     name: string;
     updateAt?: Date;
     date: Date;

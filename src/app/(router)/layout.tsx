@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { Nunito_Sans } from 'next/font/google';
 
 import Header from '@/widgets/Header';
@@ -43,6 +43,11 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         images: './opengraph-image.tsx',
     },
+    manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+    themeColor: '#FFFFFF',
 };
 
 interface RootLayoutProps {
