@@ -3,14 +3,23 @@ import { Link } from '@/shared/components';
 import styles from './Header.module.scss';
 
 const Header = () => {
+    const links = [
+        { href: '/', label: 'home' },
+        { href: '/blog', label: 'blog' },
+        { href: '/projects', label: 'projects' },
+        { href: '/cv', label: 'cv' },
+        { href: '/contacts', label: 'contacts' },
+        { href: '/pwa', label: 'pwa' },
+    ];
+
     return (
         <header className={styles.header}>
             <nav>
-                <Link href="/">home</Link>
-                <Link href="/blog">blog</Link>
-                <Link href="/projects">projects</Link>
-                <Link href="/cv">cv</Link>
-                <Link href="/contacts">contacts</Link>
+                {links.map((link) => (
+                    <Link key={link.href} href={link.href}>
+                        {link.label}
+                    </Link>
+                ))}
             </nav>
         </header>
     );
