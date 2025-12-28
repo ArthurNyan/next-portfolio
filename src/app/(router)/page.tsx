@@ -21,7 +21,7 @@ const HomePage = async () => {
             <BlocksRenderer content={description} />
             <GridGallery images={media?.map(({ id, url }) => ({ id, image: getImageUrl(url) }))} />
             <div className={styles.main__social}>
-                <SocialLink href="https://t.me/AthurNyan">send message</SocialLink>
+                <SocialLink href="https://t.me/ArthurNyan">send message</SocialLink>
                 <SocialLink href="mailto:aaryan@aaryan.ru">send email</SocialLink>
             </div>
         </MotionWrapper>
