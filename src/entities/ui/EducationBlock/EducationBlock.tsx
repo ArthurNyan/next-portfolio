@@ -19,7 +19,9 @@ export const EducationBlock = ({
     <div className={styles.cv__edu}>
         <h3>Education</h3>
         <div className={styles.cv__edu__flex}>
-            <img src={getImageUrl(logo.url)} alt={name} className={styles.cv__edu__image} />
+            {logo?.url && (
+                <img src={getImageUrl(logo.url)} alt={name} className={styles.cv__edu__image} />
+            )}
             <div>
                 {link ? (
                     <Link fontStyle="default" href={link}>
