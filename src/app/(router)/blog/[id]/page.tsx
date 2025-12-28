@@ -1,21 +1,18 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 
-import { getProject } from '@/app/api/projects/[id]/utils';
-import { getAllProjects } from '@/app/api/projects/utils';
 import { Paragraph } from '@/shared/components';
 import { formatDate } from '@/shared/lib/formatDate';
-import { getImageUrl } from '@/shared/lib/getImageUrl';
 import PageTitle from '@/widgets/PageTitle';
 import { MotionWrapper } from '@/shared/components/MotionWrapper';
-import { BlocksRenderer } from '@/shared/components/BlocksRenderer/BlocksRenderer';
+import { MarkdownRender } from '@/shared/components/BlocksRenderer/BlocksRenderer';
+import { getArticle, getArticles } from '@/app/api/acticle/acticle';
 
 import styles from './project.module.scss';
 
 export const generateStaticParams = async () => {
     const {
         data: { data: projects },
-    } = await getAllProjects();
+    } = await getArticles();
 
     return projects.map(({ slug }) => ({ id: slug.toString() }));
 };
@@ -60,9 +57,9 @@ export interface ProjectPageProps {
 const ProjectPage = async ({ params: { id } }: ProjectPageProps) => {
     const {
         data: {
-            data: { banner, date, name, about },
+            data: { article, title, date },
         },
-    } = await getProject(id);
+    } = await getArticle(id);
 
     if (!id) {
         notFound();
@@ -71,20 +68,15 @@ const ProjectPage = async ({ params: { id } }: ProjectPageProps) => {
     return (
         <MotionWrapper className={styles.project}>
             <PageTitle contentSlot={date && <Paragraph>{formatDate(date)}</Paragraph>}>
-                {name}
+                {title}
             </PageTitle>
-            {banner && (
+            {/* {banner && (
                 <div className={styles.project__image}>
-                    <Image
-                        src={getImageUrl(banner.url)}
-                        alt={banner.caption}
-                        width={672}
-                        height={430}
-                        priority
-                    />
+                    <Image src={getImageUrl(banner.url)} alt={banner.caption} width={672} height={430} priority />
                 </div>
-            )}
-            {about && <BlocksRenderer content={about} />}
+            )} */}
+            {/* {article && <BlocksRenderer content={[article]} />} */}
+            {article && <MarkdownRender content={article} />}
             {/* <Paragraph>{project.description}</Paragraph> */}
             {/* {project.links && <Paragraph>Ссылки</Paragraph>}
             {project.links?.map(({ link, title }) => (

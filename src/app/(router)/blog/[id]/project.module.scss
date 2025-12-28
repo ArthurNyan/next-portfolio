@@ -1,0 +1,19 @@
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    &__desc {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    &__image {
+        width: $main-size;
+        & img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+}

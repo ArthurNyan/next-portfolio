@@ -1,78 +1,54 @@
-import { Link, Paragraph, SubTitle, HerzenLogo } from '@/shared/components';
+import { Paragraph } from '@/shared/components';
 import ExperienceItem from '@/widgets/ExperienceItem/ExperienceItem';
-import { getExperience } from '@/app/api/experience/utils';
-import PageTitle from '@/widgets/PageTitle';
+import { getCV, getEducations } from '@/app/api/cv/cv';
+import { BlocksRenderer } from '@/shared/components/BlocksRenderer/BlocksRenderer';
+import { EducationBlock } from '@/entities/ui/EducationBlock/EducationBlock';
+import { MotionWrapper } from '@/shared/components/MotionWrapper';
 
 import styles from './cv.module.scss';
 
 const BlogPage = async () => {
-    const experience = await getExperience();
+    const {
+        data: { data: cv },
+    } = await getCV();
+    const {
+        data: { data: educations },
+    } = await getEducations();
+
+    const experience = cv.experiences;
 
     return (
-        <div className={styles.cv}>
-            <PageTitle>frontend developer</PageTitle>
-            <div className={styles.cv__title}>
-                <SubTitle>Arthur Nakhatakyan — St. Petersburg, Russia</SubTitle>
-                <Paragraph>TypeScript, Next, Redux, React Query, Webpack, Docker</Paragraph>
-            </div>
-            <div>
-                <h3>Languages</h3>
-                <Paragraph>Russian — native, English — B1, Armenian — spoken.</Paragraph>
-            </div>
-            <div>
-                <h3>Skills</h3>
-                <Paragraph>
-                    TypeScript, JavaScript, Next/React, Redux (toolkit, saga, thank, persist), React
-                    Query, Axios, Webpack, Docker, Vite, EsLint, i18n, Jest, Mocha-chai, lodash,
-                    husky hooks, Chart js, Cocos creator.
-                </Paragraph>
-                <Paragraph>Sass, MUI, Ant design, Bootstrap, Tailwind, React-hook-form.</Paragraph>
-                <Paragraph>
-                    Node/Express, Mongo DB, My SQL, SQL lite, PostrgreSQL, Linux(Ubuntu).
-                </Paragraph>
-            </div>
-            <div className={styles.cv__experience}>
-                <h3>Experience</h3>
-                {experience
-                    .map(({ date, duties, id, link, title }) => (
-                        <ExperienceItem
-                            key={id}
-                            date={date}
-                            title={title}
-                            link={link}
-                            duties={duties}
-                        />
-                    ))
-                    .reverse()}
-            </div>
-            <div className={styles.cv__edu}>
-                <h3>Education</h3>
-                <div className={styles.cv__edu__flex}>
-                    <div>
-                        <HerzenLogo width="98px" />
+        <MotionWrapper>
+            <div className={styles.cv}>
+                <BlocksRenderer content={cv?.baseInfo} />
+                {experience.length > 0 && (
+                    <div className={styles.cv__experience}>
+                        <h3>Experience</h3>
+                        {experience.map(({ id, link, startDate, endDate, about, name }) => (
+                            <ExperienceItem
+                                key={id}
+                                startDate={startDate}
+                                endDate={endDate}
+                                name={name}
+                                link={link}
+                                about={about}
+                                id={id}
+                            />
+                        ))}
                     </div>
+                )}
+                {educations.length > 0 &&
+                    educations.map((education) => (
+                        <EducationBlock {...education} key={education.id} />
+                    ))}
+                {cv?.about && (
                     <div>
-                        <Link fontStyle="default" href="https://www.herzen.spb.ru/">
-                            Herzen State Pedagogical University
-                        </Link>
-                        <Paragraph fontStyle="light">Bachelor&#39;s degree, 2nd course</Paragraph>
-                        <Paragraph>
-                            Institute of Information Technologies and Technological Education &gt;
-                            Informatics and Computer Science &gt; Software Engineering Technologies
-                        </Paragraph>
-                        <Paragraph fontStyle="light">2022-2026</Paragraph>
+                        <h3>About me</h3>
+                        <Paragraph>{cv?.about}</Paragraph>
                     </div>
-                </div>
+                )}
             </div>
-            <div>
-                <h3>About me</h3>
-                <Paragraph>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam consectetur
-                    maiores maxime explicabo ratione ad laborum aut magnam quisquam? Illo velit
-                    voluptatem tempore ullam? Veritatis sapiente id suscipit iure unde!
-                </Paragraph>
-            </div>
-        </div>
+        </MotionWrapper>
     );
 };
 

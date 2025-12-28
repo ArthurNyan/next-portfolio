@@ -2,6 +2,7 @@ import { getAllProjects } from '@/app/api/projects/utils';
 import { Link, Paragraph } from '@/shared/components';
 import PageTitle from '@/widgets/PageTitle';
 import { formatDate } from '@/shared/lib/formatDate';
+import { MotionWrapper } from '@/shared/components/MotionWrapper';
 
 import styles from './projects.module.scss';
 
@@ -11,22 +12,24 @@ export const metadata = {
 };
 
 const ProjectsPage = async () => {
-    const projects = await getAllProjects();
+    const {
+        data: { data: projects },
+    } = await getAllProjects();
 
     return (
-        <div className={styles.projects}>
+        <MotionWrapper className={styles.projects}>
             <PageTitle>check my projects</PageTitle>
             <div className={styles.projects__map}>
                 {projects.map((project) => (
                     <div key={project.id}>
-                        <Link href={`projects/${project.id}`} fontStyle="dark">
+                        <Link href={`projects/${project.slug}`} fontStyle="dark">
                             <Paragraph>{project.name}</Paragraph>
-                            <Paragraph>{formatDate(project.date)}</Paragraph>
+                            {project.date && <Paragraph>{formatDate(project.date)}</Paragraph>}
                         </Link>
                     </div>
                 ))}
             </div>
-        </div>
+        </MotionWrapper>
     );
 };
 
