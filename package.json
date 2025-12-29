@@ -6,17 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "type-check": "tsc --pretty --noEmit",
     "prepare": "husky"
   },
   "dependencies": {
+    "@strapi/blocks-react-renderer": "^1.0.2",
     "@vercel/analytics": "^1.3.1",
+    "axios": "^1.13.2",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.19",
     "moment": "^2.30.1",
-    "next": "^14.2.3",
+    "motion": "^12.23.26",
+    "next": "^14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
     "sass": "^1.70.0"
   },
   "devDependencies": {

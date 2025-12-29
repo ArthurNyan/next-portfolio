@@ -1,10 +1,12 @@
+import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
+
+import { IMedia } from '@/shared/types/api';
+
 export interface IProject {
     id: number | string;
+    slug: number | string;
     name: string;
-    updateAt?: Date;
-    date: Date;
-    description: string;
-    image: string;
-    link: string;
-    links?: { title: string; link: string }[];
+    about?: Array<RootNode>;
+    banner: IMedia;
+    date?: string;
 }

@@ -1,0 +1,17 @@
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    &__map {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        & a p {
+            line-height: normal;
+            &:nth-child(2) {
+                color: $dark500;
+            }
+        }
+    }
+}

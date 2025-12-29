@@ -1,17 +1,9 @@
-import { cache } from 'react';
-import { notFound } from 'next/navigation';
+import { instance } from '@/shared/api/api';
+import { IStrapiType } from '@/shared/types/api';
 
 import { IProject } from '../../_model/project';
 
-// eslint-disable-next-line import/prefer-default-export
-export const getProject = cache(async (id: number | string) => {
-    const project = await fetch(`${process.env.BD_OPEN_URL}/projects/${id}`, {
-        next: { revalidate: 300 },
-    });
+export interface IProjectRes extends IStrapiType<IProject> {}
 
-    if (project.status === 404) {
-        notFound();
-    }
-
-    return project.json() as unknown as IProject;
-});
+export const getProject = (id: string | number) =>
+    instance.get<IProjectRes>(`/projects/${id}?populate=*`);

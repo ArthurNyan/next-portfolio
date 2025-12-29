@@ -14,8 +14,15 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '1337',
+                pathname: '/uploads/**',
+            },
+            {
                 protocol: 'https',
-                hostname: 'i.postimg.cc',
+                hostname: 'hopeful-hero-a31b9d5638.media.strapiapp.com',
+                pathname: '/**',
             },
         ],
         minimumCacheTTL: 6000,

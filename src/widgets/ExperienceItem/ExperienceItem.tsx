@@ -1,32 +1,21 @@
+import dayjs from 'dayjs';
+
 import { Link, Paragraph } from '@/shared/components';
 import SmallTitle from '@/shared/components/Typography/SmallTitle/SmallTitle';
-import List from '@/shared/components/List/List';
-import ListItem from '@/shared/components/ListItem/ListItem';
+import { Experience } from '@/app/api/cv/cv';
+import { BlocksRenderer } from '@/shared/components/BlocksRenderer/BlocksRenderer';
 
 import styles from './ExperienceItem.module.scss';
 
-interface ExperienceItemProps {
-    title: string;
-    date: string;
-    link: string;
-    duties: Array<string>;
-}
-
-const ExperienceItem = ({ title, date, link, duties }: ExperienceItemProps) => {
+const ExperienceItem = ({ link, startDate, endDate, name, about }: Experience) => {
     return (
         <div className={styles.experienceItem}>
             <div className={styles.experienceItem__date}>
-                <Paragraph>{date}</Paragraph>
+                <Paragraph>{`${dayjs(startDate).format('MMMM YYYY')}-${dayjs(endDate).format('MMMM YYYY')}`}</Paragraph>
             </div>
             <div className={styles.experienceItem__duties}>
-                <SmallTitle>
-                    <Link href={link}>{title}</Link>
-                </SmallTitle>
-                <List>
-                    {duties.map((duty) => (
-                        <ListItem key={duty}>{duty}</ListItem>
-                    ))}
-                </List>
+                <SmallTitle>{link ? <Link href={link}>{name}</Link> : name}</SmallTitle>
+                <BlocksRenderer content={about} />
             </div>
         </div>
     );
