@@ -1,12 +1,17 @@
 import { RootNode } from '@strapi/blocks-react-renderer/dist/BlocksRenderer';
 
-import { instance } from '@/shared/api/api';
-import { IMedia, IStrapiType } from '@/shared/types/api';
+import { createStrapiParams, instance } from '@/shared/api/api';
+import { IMedia, ILocalizedEntity, IStrapiType } from '@/shared/types/api';
 
-export type IAbout = IStrapiType<{
-    id: number;
-    description: Array<RootNode>;
-    media: Array<IMedia>;
-}>;
+export type IAbout = IStrapiType<
+    ILocalizedEntity & {
+        description: Array<RootNode>;
+        media: Array<IMedia>;
+        title: string;
+    }
+>;
 
-export const getAbout = () => instance.get<IAbout>(`/about?populate=*`);
+export const getAbout = (locale = 'ru') =>
+    instance.get<IAbout>('/about', {
+        params: createStrapiParams(locale, '*'),
+    });

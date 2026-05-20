@@ -1,12 +1,9 @@
-import { cache } from 'react';
+import { createStrapiParams, instance } from '@/shared/api/api';
+import { IStrapiType } from '@/shared/types/api';
 
-import { IExperience } from '../_model/experience';
+import { Experience } from '../cv/cv';
 
-// eslint-disable-next-line import/prefer-default-export
-export const getExperience = cache(async () => {
-    const experience = await fetch(`${process.env.BD_OPEN_URL}/experience`, {
-        next: { revalidate: 1000 },
+export const getExperience = (locale = 'ru') =>
+    instance.get<IStrapiType<Experience[]>>('/experiences', {
+        params: createStrapiParams(locale, '*'),
     });
-
-    return experience.json() as unknown as IExperience[];
-});

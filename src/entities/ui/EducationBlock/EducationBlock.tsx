@@ -1,11 +1,22 @@
+import Image from 'next/image';
 import dayjs from 'dayjs';
+import 'dayjs/locale/ru';
 
 import { Link, Paragraph } from '@/shared/components';
 import { Education } from '@/app/api/cv/cv';
 import { BlocksRenderer } from '@/shared/components/BlocksRenderer/BlocksRenderer';
 import { getImageUrl } from '@/shared/lib/getImageUrl';
+import { AppLocale } from '@/shared/i18n/config';
 
 import styles from './cv.module.scss';
+
+interface EducationBlockProps
+    extends Pick<
+        Education,
+        'startDate' | 'name' | 'link' | 'endDate' | 'about' | 'logo' | 'degree'
+    > {
+    locale?: AppLocale;
+}
 
 export const EducationBlock = ({
     startDate,
@@ -15,12 +26,18 @@ export const EducationBlock = ({
     about,
     logo,
     degree,
-}: Education) => (
+    locale = 'ru',
+}: EducationBlockProps) => (
     <div className={styles.cv__edu}>
-        <h3>Education</h3>
         <div className={styles.cv__edu__flex}>
             {logo?.url && (
-                <img src={getImageUrl(logo.url)} alt={name} className={styles.cv__edu__image} />
+                <Image
+                    src={getImageUrl(logo.url)}
+                    alt={name}
+                    className={styles.cv__edu__image}
+                    width={120}
+                    height={120}
+                />
             )}
             <div>
                 {link ? (
@@ -34,7 +51,8 @@ export const EducationBlock = ({
                 {about && <BlocksRenderer content={about} />}
                 {startDate && endDate && (
                     <Paragraph fontStyle="light">
-                        {dayjs(startDate).year()}-{dayjs(endDate).year()}
+                        {dayjs(startDate).locale(locale).year()}-
+                        {dayjs(endDate).locale(locale).year()}
                     </Paragraph>
                 )}
             </div>

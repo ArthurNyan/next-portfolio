@@ -4,6 +4,7 @@
     align-items: flex-start;
 
     & nav {
+        flex-wrap: wrap;
         display: flex;
         gap: 12px;
 
@@ -11,5 +12,9 @@
             text-decoration: none;
             color: $dark700;
         }
+    }
+
+    &__toggle {
+        color: $primary700 !important;
     }
 }

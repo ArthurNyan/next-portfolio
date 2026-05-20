@@ -6,6 +6,8 @@ import { MotionWrapper } from '@/shared/components/MotionWrapper';
 
 import styles from './projects.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
     title: 'Blog',
     description: 'Read my thoughts on software development, design, and other.',

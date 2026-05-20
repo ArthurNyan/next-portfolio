@@ -3,14 +3,6 @@ const nextConfig = {
     sassOptions: {
         additionalData: `@import "@/shared/styles/_vars.scss";`,
     },
-    rewrites() {
-        return [
-            {
-                source: '/',
-                destination: '/users',
-            },
-        ];
-    },
     images: {
         remotePatterns: [
             {

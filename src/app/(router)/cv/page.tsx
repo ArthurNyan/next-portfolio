@@ -7,6 +7,8 @@ import { MotionWrapper } from '@/shared/components/MotionWrapper';
 
 import styles from './cv.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 const BlogPage = async () => {
     const {
         data: { data: cv },
@@ -24,22 +26,30 @@ const BlogPage = async () => {
                 {experience.length > 0 && (
                     <div className={styles.cv__experience}>
                         <h3>Experience</h3>
-                        {experience.map(({ id, link, startDate, endDate, about, name }) => (
+                        {experience.map((item) => (
                             <ExperienceItem
-                                key={id}
-                                startDate={startDate}
-                                endDate={endDate}
-                                name={name}
-                                link={link}
-                                about={about}
-                                id={id}
+                                key={item.id}
+                                startDate={item.startDate}
+                                endDate={item.endDate}
+                                name={item.name}
+                                link={item.link}
+                                about={item.about}
                             />
                         ))}
                     </div>
                 )}
                 {educations.length > 0 &&
                     educations.map((education) => (
-                        <EducationBlock {...education} key={education.id} />
+                        <EducationBlock
+                            key={education.id}
+                            startDate={education.startDate}
+                            endDate={education.endDate}
+                            name={education.name}
+                            link={education.link}
+                            about={education.about}
+                            logo={education.logo}
+                            degree={education.degree}
+                        />
                     ))}
                 {cv?.about && (
                     <div>

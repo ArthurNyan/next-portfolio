@@ -5,17 +5,11 @@ import { formatDate } from '@/shared/lib/formatDate';
 import PageTitle from '@/widgets/PageTitle';
 import { MotionWrapper } from '@/shared/components/MotionWrapper';
 import { MarkdownRender } from '@/shared/components/BlocksRenderer/BlocksRenderer';
-import { getArticle, getArticles } from '@/app/api/acticle/acticle';
+import { getArticle } from '@/app/api/acticle/acticle';
 
 import styles from './project.module.scss';
 
-export const generateStaticParams = async () => {
-    const {
-        data: { data: projects },
-    } = await getArticles();
-
-    return projects.map(({ slug }) => ({ id: slug.toString() }));
-};
+export const dynamic = 'force-dynamic';
 
 export interface ProjectPageProps {
     params: {

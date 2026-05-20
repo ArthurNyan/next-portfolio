@@ -1,14 +1,23 @@
-import { instance } from '@/shared/api/api';
-import { IStrapiType } from '@/shared/types/api';
+import { createStrapiParams, instance } from '@/shared/api/api';
+import { ILocalizedEntity, IStrapiType } from '@/shared/types/api';
 
-export interface IArticle {
-    id: number;
+export interface IArticle extends ILocalizedEntity {
     slug: string;
     title: string;
     date?: string;
     article: string;
+    legacyId?: string;
 }
 
-export const getArticles = () => instance.get<IStrapiType<Array<IArticle>>>('/articles');
-export const getArticle = (id: string | number) =>
-    instance.get<IStrapiType<IArticle>>(`/articles/${id}?populate=*`);
+export const getArticles = (locale = 'ru') =>
+    instance.get<IStrapiType<Array<IArticle>>>('/articles', {
+        params: createStrapiParams(locale),
+    });
+export const getArticle = (localeOrId: string | number, id?: string | number) => {
+    const locale = id === undefined ? 'ru' : String(localeOrId);
+    const articleId = id ?? localeOrId;
+
+    return instance.get<IStrapiType<IArticle>>(`/articles/${articleId}`, {
+        params: createStrapiParams(locale, '*'),
+    });
+};

@@ -1,12 +1,14 @@
-import { cache } from 'react';
+import { getAbout } from '../about/about';
 
-import { IImage } from '../_model/image';
+export const getPortfolioImages = async (locale = 'ru') => {
+    const {
+        data: {
+            data: { media },
+        },
+    } = await getAbout(locale);
 
-// eslint-disable-next-line import/prefer-default-export
-export const getPortfolioImages = cache(async () => {
-    const images = await fetch(`${process.env.BD_OPEN_URL}/images`, {
-        next: { revalidate: 1000 },
-    });
-
-    return images.json() as unknown as IImage[];
-});
+    return media.map(({ id, url }) => ({
+        id,
+        image: url,
+    }));
+};

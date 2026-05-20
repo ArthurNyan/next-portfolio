@@ -6,6 +6,8 @@ import { formatDate } from '@/shared/lib/formatDate';
 
 import styles from './projects.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 const BlogPage = async () => {
     const {
         data: { data: projects },

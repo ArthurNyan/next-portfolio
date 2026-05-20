@@ -2,6 +2,20 @@ export interface IStrapiType<Data extends object> {
     data: Data;
 }
 
+export interface ILocalization {
+    id: number;
+    documentId: string;
+    locale: string;
+    slug?: string;
+}
+
+export interface ILocalizedEntity {
+    id: number;
+    documentId: string;
+    locale: string;
+    localizations?: ILocalization[];
+}
+
 export interface IMedia {
     id: number;
     documentId: string;

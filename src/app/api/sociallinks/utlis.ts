@@ -1,12 +1,8 @@
-import { cache } from 'react';
+import { createStrapiParams, instance } from '@/shared/api/api';
 
 import { ISocialLinksProps } from '../_model/socialLinksProps';
 
-// eslint-disable-next-line import/prefer-default-export
-export const getSocialLinks = cache(async () => {
-    const socialLinks = await fetch(`${process.env.BD_OPEN_URL}/social-links`, {
-        next: { revalidate: 1000 },
+export const getSocialLinks = (locale = 'ru') =>
+    instance.get<{ data: ISocialLinksProps[] }>('/social-links', {
+        params: createStrapiParams(locale),
     });
-    const data = socialLinks.json();
-    return data as unknown as ISocialLinksProps[];
-});

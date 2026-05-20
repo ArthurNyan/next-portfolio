@@ -8,6 +8,8 @@ import { MotionWrapper } from '@/shared/components/MotionWrapper';
 import styles from './MainPage.module.scss';
 import { getAbout } from '../api/about/about';
 
+export const dynamic = 'force-dynamic';
+
 const HomePage = async () => {
     const {
         data: {

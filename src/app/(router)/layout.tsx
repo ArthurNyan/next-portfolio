@@ -8,10 +8,6 @@ import Footer from '@/widgets/Footer';
 import '../globals.scss';
 
 import Analytics from '../providers/Analytics';
-import { getSocialLinks } from '../api/sociallinks/utlis';
-import { getExperience } from '../api/experience/utils';
-import { getAllProjects } from '../api/projects/utils';
-import { getPortfolioImages } from '../api/images/utils';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://www.malos.ru/'),
@@ -55,8 +51,6 @@ const NunitoSans = Nunito_Sans({
 });
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-    Promise.all([getSocialLinks(), getExperience(), getAllProjects(), getPortfolioImages()]);
-
     return (
         <html lang="ru">
             <body className={classNames(NunitoSans.className, 'layout')}>

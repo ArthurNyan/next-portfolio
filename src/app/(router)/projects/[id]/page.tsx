@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
 import { getProject } from '@/app/api/projects/[id]/utils';
-import { getAllProjects } from '@/app/api/projects/utils';
-import { Paragraph } from '@/shared/components';
+import { Paragraph, SocialLink } from '@/shared/components';
 import { formatDate } from '@/shared/lib/formatDate';
 import { getImageUrl } from '@/shared/lib/getImageUrl';
 import PageTitle from '@/widgets/PageTitle';
@@ -12,13 +11,7 @@ import { BlocksRenderer } from '@/shared/components/BlocksRenderer/BlocksRendere
 
 import styles from './project.module.scss';
 
-export const generateStaticParams = async () => {
-    const {
-        data: { data: projects },
-    } = await getAllProjects();
-
-    return projects.map(({ slug }) => ({ id: slug.toString() }));
-};
+export const dynamic = 'force-dynamic';
 
 export interface ProjectPageProps {
     params: {
@@ -60,13 +53,16 @@ export interface ProjectPageProps {
 const ProjectPage = async ({ params: { id } }: ProjectPageProps) => {
     const {
         data: {
-            data: { banner, date, name, about },
+            data: { banner, date, name, about, techStack, demoUrl, githubUrl, link, links },
         },
     } = await getProject(id);
 
     if (!id) {
         notFound();
     }
+
+    const primaryLinks = [demoUrl, githubUrl, link].filter(Boolean);
+    const secondaryLinks = links?.filter((item) => !primaryLinks.includes(item.link)) || [];
 
     return (
         <MotionWrapper className={styles.project}>
@@ -84,17 +80,27 @@ const ProjectPage = async ({ params: { id } }: ProjectPageProps) => {
                     />
                 </div>
             )}
+            {techStack && techStack.length > 0 && (
+                <div className={styles.project__meta}>
+                    <Paragraph>Stack</Paragraph>
+                    <div className={styles.project__tags}>
+                        {techStack.map((item) => (
+                            <span className={styles.project__tag} key={item}>
+                                {item}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
             {about && <BlocksRenderer content={about} />}
-            {/* <Paragraph>{project.description}</Paragraph> */}
-            {/* {project.links && <Paragraph>Ссылки</Paragraph>}
-            {project.links?.map(({ link, title }) => (
-                <SocialLink href={link || ''} key={link}>
-                    {title}
+            {demoUrl && <SocialLink href={demoUrl}>Open demo</SocialLink>}
+            {githubUrl && <SocialLink href={githubUrl}>Open GitHub</SocialLink>}
+            {!demoUrl && !githubUrl && link && <SocialLink href={link}>Open</SocialLink>}
+            {secondaryLinks.map((item) => (
+                <SocialLink href={item.link} key={item.link}>
+                    {item.title}
                 </SocialLink>
-            ))} */}
-            {/* {date && (
-                <SocialLink href={project.link || ''}>Updated at {formatDate(date)}</SocialLink>
-            )} */}
+            ))}
         </MotionWrapper>
     );
 };

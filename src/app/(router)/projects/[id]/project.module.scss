@@ -2,6 +2,23 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    &__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    &__tag {
+        padding: 6px 10px;
+        border: 1px solid $dark500;
+        border-radius: 999px;
+        font-size: 14px;
+        line-height: 1;
+    }
     &__desc {
         display: flex;
         justify-content: space-between;
