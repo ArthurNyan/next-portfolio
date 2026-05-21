@@ -11,7 +11,9 @@ export interface IArticle extends ILocalizedEntity {
 
 export const getArticles = (locale = 'ru') =>
     instance.get<IStrapiType<Array<IArticle>>>('/articles', {
-        params: createStrapiParams(locale),
+        params: createStrapiParams(locale, undefined, {
+            'sort[0]': 'date:desc',
+        }),
     });
 export const getArticle = (localeOrId: string | number, id?: string | number) => {
     const locale = id === undefined ? 'ru' : String(localeOrId);

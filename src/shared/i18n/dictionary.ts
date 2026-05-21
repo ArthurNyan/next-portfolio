@@ -23,6 +23,11 @@ type Dictionary = {
         openDemo: string;
         openGithub: string;
         techStack: string;
+        featured: string;
+        privateCase: string;
+        readArticle: string;
+        openProject: string;
+        minuteShort: string;
     };
     home: {
         title: string;
@@ -70,6 +75,11 @@ const dictionaries: Record<AppLocale, Dictionary> = {
             openDemo: 'Открыть демо',
             openGithub: 'Открыть GitHub',
             techStack: 'Стек',
+            featured: 'featured',
+            privateCase: 'private case',
+            readArticle: 'Читать статью',
+            openProject: 'Открыть проект',
+            minuteShort: 'мин',
         },
         home: {
             title: 'главная страница',
@@ -115,6 +125,11 @@ const dictionaries: Record<AppLocale, Dictionary> = {
             openDemo: 'Open demo',
             openGithub: 'Open GitHub',
             techStack: 'Stack',
+            featured: 'featured',
+            privateCase: 'private case',
+            readArticle: 'Read article',
+            openProject: 'Open project',
+            minuteShort: 'min',
         },
         home: {
             title: 'home page',
